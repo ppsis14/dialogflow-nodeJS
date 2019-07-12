@@ -17,8 +17,40 @@ const app = express();
 app.post('/webhook', (req, res) => res.sendStatus(200))
 // app.post('/webhook', line.middleware(config), webhookHandler);
 
-app.get('/webhook', function (req, res) {
-    res.send('hello webhook');
-    console.log('hello webhook');
-  });
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: true}));
+// app.post("/webhook", (req, res) => {
+//    if (req.body.queryResult.parameters.account_information == "contact number"
+//     && req.body.queryResult.parameters.account_information) {
+//     var speech = "999999999";
+//   }
+//   else if (req.body.queryResult.parameters.account_information == "account number"
+//     && req.body.queryResult.parameters.account_information) {
+//     var speech = "9999999999999";
+//   }
+//   else if (req.body.queryResult.parameters.account_information == "DOB"
+//     && req.body.queryResult.parameters.account_information) {
+//     var speech = "1 Jan 2019";
+//   }
+//   else if (req.body.queryResult.parameters.account_information == "address"
+//     && req.body.queryResult.parameters.account_information) {
+//     var speech = " floor no 1 , Building no 1 , address";
+//   }
+//   return res.json({
+//     fulfillmentText: "fulfillmentText",
+//     fulfillmentMessages: [{
+//       simpleResponses: {
+//         simpleResponses: [{
+//           "textToSpeech": "textToSpeech",
+//           "displayText": speech
+//         }]
+//       }
+//     }],
+//     source: "webhook-sample"
+//   });
+// });
+
+// app.get('/webhook', function (req, res) {
+//     res.send('hello webhook');
+//   });
 app.listen(port)
