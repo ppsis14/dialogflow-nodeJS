@@ -17,4 +17,8 @@ const app = express();
 app.post('/webhook', (req, res) => res.sendStatus(200))
 // app.post('/webhook', line.middleware(config), webhookHandler);
 
+app.get('/webhook', function (req, res) {
+    res.send('hello webhook');
+    console.log('hello webhook');
+  });
 app.listen(port)
