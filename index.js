@@ -4,7 +4,7 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const config = require('./config.js');
+// const config = require('./config.js');
 // const webhookHandler = require('./handlers/webhookHandler.js');
 
 // listen on port
