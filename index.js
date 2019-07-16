@@ -12,7 +12,7 @@ const port = process.env.PORT || 4000
 const app = express();
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
   
 app.get('/', (req, res) => {
     res.send({
@@ -21,24 +21,29 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    console.log('POST: /');
-    console.log('Body: ',req.body);
+    if (req.body) {
+        res.send({
+            bodysuccess: true
+        });
+    }
+    // console.log('POST: /');
+    // console.log('Body: ',req.body);
   
-    //Create an instance
-    const agent = new WebhookClient({request: req,response: res});
+    // //Create an instance
+    // const agent = new WebhookClient({request: req, response: res});
   
-    //Test get value of WebhookClient
-    console.log('agentVersion: ' + agent.agentVersion);
-    console.log('intent: ' + agent.intent);
-    console.log('locale: ' + agent.locale);
-    console.log('query: ', agent.query);
-    console.log('session: ', agent.session);
+    // //Test get value of WebhookClient
+    // console.log('agentVersion: ' + agent.agentVersion);
+    // console.log('intent: ' + agent.intent);
+    // console.log('locale: ' + agent.locale);
+    // console.log('query: ', agent.query);
+    // console.log('session: ', agent.session);
   
-    // Run the proper function handler based on the matched Dialogflow intent name
-    let intentMap = new Map();
-    let str = "i'm sorry.";
-    intentMap.set('BMI - custom - yes', str);
-    agent.handleRequest(intentMap);
+    // // Run the proper function handler based on the matched Dialogflow intent name
+    // let intentMap = new Map();
+    // let str = "i'm sorry.";
+    // intentMap.set('BMI - custom - yes', str);
+    // agent.handleRequest(intentMap);
 
     res.end()
   });
