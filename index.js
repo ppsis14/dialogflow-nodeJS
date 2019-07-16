@@ -17,7 +17,7 @@ const app = express();
 app.post('/webhook', (req, res) => {
     res.sendStatus(200)
     res.send('hello webhook');
-}
+});
 // app.post('/webhook', line.middleware(config), webhookHandler);
 
 app.use(bodyParser.json());
