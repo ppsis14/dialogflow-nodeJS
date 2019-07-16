@@ -2,19 +2,15 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('request')
-
+// const request = require('request')
+// Import the appropriate class
+const {WebhookClient} = require('dialogflow-fulfillment');
 // listen on port
 const port = process.env.PORT || 4000
 
 // create Express app
 const app = express();
-// Import the appropriate class
-const {
-    WebhookClient
-  } = require('dialogflow-fulfillment');
-  
-  
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
   
@@ -29,10 +25,7 @@ app.post('/webhook', (req, res) => {
     console.log('Body: ',req.body);
   
     //Create an instance
-    const agent = new WebhookClient({
-      request: req,
-      response: res
-});
+    const agent = new WebhookClient({request: req,response: res});
   
     //Test get value of WebhookClient
     console.log('agentVersion: ' + agent.agentVersion);
@@ -43,19 +36,16 @@ app.post('/webhook', (req, res) => {
   
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
-    let str = "i'm sorry."
-    intentMap.set('Location', location);  // "Location" is once Intent Name of Dialogflow Agent
+    let str = "i'm sorry.";
     intentMap.set('BMI - custom - yes', str);
     agent.handleRequest(intentMap);
+
+    res.end()
   });
   
   app.listen(port, () => {
     console.log(`Server is running at port: ${port}`);
   })
-// app.post('/webhook', line.middleware(config), webhookHandler);
-
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));
 // app.post("/webhook", (req, res) => {
 //    if (req.body.queryResult.parameters.account_information == "contact number"
 //     && req.body.queryResult.parameters.account_information) {
