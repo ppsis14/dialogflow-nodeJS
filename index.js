@@ -14,11 +14,14 @@ const port = process.env.PORT || 4000
 const app = express();
 
 // register a webhook handler with middleware
-app.post('/webhook', (req, res) => res.sendStatus(200))
+app.post('/webhook', (req, res) => {
+    res.sendStatus(200)
+    res.send('hello webhook');
+}
 // app.post('/webhook', line.middleware(config), webhookHandler);
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 // app.post("/webhook", (req, res) => {
 //    if (req.body.queryResult.parameters.account_information == "contact number"
 //     && req.body.queryResult.parameters.account_information) {
