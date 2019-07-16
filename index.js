@@ -2,7 +2,6 @@
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
-// const request = require('request')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment');
 // listen on port
@@ -22,29 +21,23 @@ app.get('/', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     if (req.body) {
+        //Create an instance
+        const agent = new WebhookClient({request: req, response: res});
         res.send({
-            bodysuccess: true
+            //Test get value of WebhookClient
+            bodysuccess: true,
+            agentVersion: agent.agentVersion,
+            intent: agent.inten,
+            locale: agent.locale,
+            query: agent.query,
+            session: agent.session,
         });
+        // Run the proper function handler based on the matched Dialogflow intent name
+        let intentMap = new Map();
+        let str = "i'm sorry.";
+        intentMap.set('BMI - custom - yes', str);
+        agent.handleRequest(intentMap);
     }
-    // console.log('POST: /');
-    // console.log('Body: ',req.body);
-  
-    // //Create an instance
-    // const agent = new WebhookClient({request: req, response: res});
-  
-    // //Test get value of WebhookClient
-    // console.log('agentVersion: ' + agent.agentVersion);
-    // console.log('intent: ' + agent.intent);
-    // console.log('locale: ' + agent.locale);
-    // console.log('query: ', agent.query);
-    // console.log('session: ', agent.session);
-  
-    // // Run the proper function handler based on the matched Dialogflow intent name
-    // let intentMap = new Map();
-    // let str = "i'm sorry.";
-    // intentMap.set('BMI - custom - yes', str);
-    // agent.handleRequest(intentMap);
-
     res.end()
   });
   
