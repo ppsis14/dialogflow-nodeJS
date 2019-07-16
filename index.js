@@ -12,16 +12,56 @@ const port = process.env.PORT || 4000
 
 // create Express app
 const app = express();
-
-// register a webhook handler with middleware
-app.post('/webhook', (req, res) => {
-    res.sendStatus(200)
-    res.send('hello webhook');
-});
-// app.post('/webhook', line.middleware(config), webhookHandler);
-
+// Import the appropriate class
+const {
+    WebhookClient
+  } = require('dialogflow-fulfillment');
+  
+  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
+  
+app.get('/', (req, res) => {
+    res.send({
+      success: true
+    });
+})
+
+app.post('/webhook', (req, res) => {
+    console.log('POST: /');
+    console.log('Body: ',req.body);
+  
+    //Create an instance
+    const agent = new WebhookClient({
+      request: req,
+      response: res
+});
+  
+    //Test get value of WebhookClient
+    console.log('agentVersion: ' + agent.agentVersion);
+    console.log('intent: ' + agent.intent);
+    console.log('locale: ' + agent.locale);
+    console.log('query: ', agent.query);
+    console.log('session: ', agent.session);
+  
+    //Function Location
+    function location(agent) {
+      agent.add('Welcome to Thailand.');
+    }
+  
+    // Run the proper function handler based on the matched Dialogflow intent name
+    let intentMap = new Map();
+    intentMap.set('Location', location);  // "Location" is once Intent Name of Dialogflow Agent
+    agent.handleRequest(intentMap);
+  });
+  
+  app.listen(port, () => {
+    console.log(`Server is running at port: ${port}`);
+  })
+// app.post('/webhook', line.middleware(config), webhookHandler);
+
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({extended: false}));
 // app.post("/webhook", (req, res) => {
 //    if (req.body.queryResult.parameters.account_information == "contact number"
 //     && req.body.queryResult.parameters.account_information) {
@@ -56,4 +96,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 // app.get('/webhook', function (req, res) {
 //     res.send('hello webhook');
 //   });
-app.listen(port)
+// app.listen(port)
+
+
