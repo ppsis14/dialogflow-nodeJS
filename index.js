@@ -33,14 +33,17 @@ app.post('/webhook', (req, res) => {
             session: agent.session,
         });
         // Run the proper function handler based on the matched Dialogflow intent name
-        // let intentMap = new Map();
-        // let str = "i'm sorry.";
-        // intentMap.set('BMI - custom - yes', str);
-        // agent.handleRequest(intentMap);
+        let intentMap = new Map();
+        intentMap.set('BMI - custom - yes', stringTest);
+        agent.handleRequest(intentMap);
     }
     res.end()
   });
   
+  function stringTest(agent) {
+    agent.add(`My name is thikamporn`);
+  }
+
   app.listen(port, () => {
     console.log(`Server is running at port: ${port}`);
   })
