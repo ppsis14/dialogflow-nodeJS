@@ -1,11 +1,8 @@
 'use strict';
 require('dotenv').config()
-// const line = require('@line/bot-sdk')
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-// const config = require('./config.js');
-// const webhookHandler = require('./handlers/webhookHandler.js');
 
 // listen on port
 const port = process.env.PORT || 4000
@@ -44,14 +41,11 @@ app.post('/webhook', (req, res) => {
     console.log('query: ', agent.query);
     console.log('session: ', agent.session);
   
-    //Function Location
-    function location(agent) {
-      agent.add('Welcome to Thailand.');
-    }
-  
     // Run the proper function handler based on the matched Dialogflow intent name
     let intentMap = new Map();
+    let str = "i'm sorry."
     intentMap.set('Location', location);  // "Location" is once Intent Name of Dialogflow Agent
+    intentMap.set('BMI - custom - yes', str);
     agent.handleRequest(intentMap);
   });
   
