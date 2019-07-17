@@ -42,7 +42,7 @@ app.post('/webhook', (req, res) => {
                 {
                   "text": {
                     "text": [
-                      "เอ...ขอคิดแปปนึงนะ ว่าน้ำหนัก 64 และส่วนสูง 160 จะอ้วนหรือผอมดีน้าาา"
+                      "THIKAMPORN SIMUD"
                     ]
                   },
                   "platform": "LINE"
