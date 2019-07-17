@@ -26,11 +26,11 @@ app.post('/webhook', (req, res) => {
         res.send({
             //Test get value of WebhookClient
             bodysuccess: true,
-            agentVersion: agent.agentVersion,
-            intent: agent.inten,
-            locale: agent.locale,
-            query: agent.query,
-            session: agent.session,
+            // agentVersion: agent.agentVersion,
+            // intent: agent.inten,
+            // locale: agent.locale,
+            // query: agent.query,
+            // session: agent.session,
         });
         // Run the proper function handler based on the matched Dialogflow intent name
         // let intentMap = new Map();
