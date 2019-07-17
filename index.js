@@ -1,4 +1,4 @@
-'use strict';
+// 'use strict';
 require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -21,16 +21,20 @@ app.get('/', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     if (req.body.queryResult.action == "BMI.BMI-custom.BMI-custom-yes") {
+        var parameters = req.body.queryResult.parameters
+        var height = parameters['height']
+        var weight = parameters['weight']
         res.send({
                 //Test get value of WebhookClient
             bodysuccess: true,
+            height: height,
+            weight: weight
                 // agentVersion: agent.agentVersion,
                 // intent: agent.inten,
                 // locale: agent.locale,
                 // query: agent.query,
                 // session: agent.session,
         });
-        // var speech = "999999999";
     }
         //Create an instance
         const agent = new WebhookClient({request: req, response: res});
