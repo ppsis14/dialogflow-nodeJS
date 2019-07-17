@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    if (req.body.queryResult.parameters.action == "BMI.BMI-custom.BMI-custom-yes") {
+    if (req.body.queryResult.action == "BMI.BMI-custom.BMI-custom-yes") {
         res.send({
                 //Test get value of WebhookClient
             bodysuccess: true,
