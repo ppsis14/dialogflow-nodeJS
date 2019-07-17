@@ -1,5 +1,5 @@
 // const line = require('@line/bot-sdk');
-const config = require('../config.js');
+// const config = require('../config.js');
 
 // create LINE SDK client
 // const client = new line.Client(config);
@@ -52,7 +52,7 @@ const webhook = (req, res) => {
         });
     }
         //Create an instance
-        const agent = new WebhookClient({request: req, response: res});
+        // const agent = new WebhookClient({request: req, response: res});
         // res.send({
         //     //Test get value of WebhookClient
         //     bodysuccess: true,
