@@ -32,6 +32,8 @@ app.post('/webhook', (req, res) => {
             // query: agent.query,
             // session: agent.session,
         });
+        console.log(req.body);
+        
         // Run the proper function handler based on the matched Dialogflow intent name
         // let intentMap = new Map();
         // intentMap.set('BMI - custom - yes', stringTest);
