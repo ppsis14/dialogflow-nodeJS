@@ -1,25 +1,21 @@
-// 'use strict';
-require('dotenv').config()
-const express = require('express')
-const bodyParser = require('body-parser')
-// Import the appropriate class
-const {WebhookClient} = require('dialogflow-fulfillment');
-// listen on port
-const port = process.env.PORT || 4000
+// const line = require('@line/bot-sdk');
+const config = require('../config.js');
 
-// create Express app
-const app = express();
+// create LINE SDK client
+// const client = new line.Client(config);
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
-  
-app.get('/', (req, res) => {
-    res.send({
-      success: true
-    });
-})
+// const webhook = (req, res) => {
+//     // console.log(`User id: ${req.body.events[0].source.userId}`);
+//     res.sendStatus(200)
+//     return Promise
+//     .all(req.body.events.map(handleEvent))
+//     .catch((err) => {
+//         console.error(err + "handlerEnvet not pass");
+//         res.status(503).end();
+//     });
+// };
 
-app.post('/webhook', (req, res) => {
+const webhook = (req, res) => {
     if (req.body.queryResult.action == "BMI.BMI-custom.BMI-custom-yes") {
         const parameters = req.body.queryResult.parameters
         // var height = parameters['height']
@@ -78,8 +74,20 @@ app.post('/webhook', (req, res) => {
         // agent.handleRequest(intentMap);
     
     res.end()
-});
+}
 
-app.listen(port)
+// event handler
+// function handleEvent(event) {
+//     if (event.type !== 'message' || event.message.type !== 'text') {
+//       // ignore non-text-message event
+//       return Promise.resolve(null);
+//     }
+  
+//     // create a echoing text message
+//     const echo = { type: 'text', text: event.message.text };
+  
+//     // use reply API
+//     return client.replyMessage(event.replyToken, echo);
+// }
 
-
+module.exports = webhook;
