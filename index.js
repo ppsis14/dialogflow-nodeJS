@@ -25,11 +25,11 @@ app.post('/webhook', (req, res) => {
             res.send({
                 //Test get value of WebhookClient
                 bodysuccess: true,
-                agentVersion: agent.agentVersion,
-                intent: agent.inten,
-                locale: agent.locale,
-                query: agent.query,
-                session: agent.session,
+                // agentVersion: agent.agentVersion,
+                // intent: agent.inten,
+                // locale: agent.locale,
+                // query: agent.query,
+                // session: agent.session,
             });
         // var speech = "999999999";
     }
