@@ -20,17 +20,16 @@ app.get('/', (req, res) => {
 })
 
 app.post('/webhook', (req, res) => {
-    if (req.body.queryResult.parameters.action == "BMI.BMI-custom.BMI-custom-yes"
-        && req.body.queryResult.parameters) {
-            res.send({
+    if (req.body.queryResult.parameters.action == "BMI.BMI-custom.BMI-custom-yes") {
+        res.send({
                 //Test get value of WebhookClient
-                bodysuccess: true,
+            bodysuccess: true,
                 // agentVersion: agent.agentVersion,
                 // intent: agent.inten,
                 // locale: agent.locale,
                 // query: agent.query,
                 // session: agent.session,
-            });
+        });
         // var speech = "999999999";
     }
         //Create an instance
@@ -56,7 +55,7 @@ app.post('/webhook', (req, res) => {
         // agent.handleRequest(intentMap);
     
     res.end()
-  });
+});
   
 //   function stringTest(agent) {
 //     agent.add(`My name is thikamporn`);
