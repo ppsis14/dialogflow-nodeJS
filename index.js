@@ -21,19 +21,50 @@ app.get('/', (req, res) => {
 
 app.post('/webhook', (req, res) => {
     if (req.body.queryResult.action == "BMI.BMI-custom.BMI-custom-yes") {
-        var parameters = req.body.queryResult.parameters
+        const parameters = req.body.queryResult.parameters
         var height = parameters['height']
         var weight = parameters['weight']
+        // res.send({
+        //         //Test get value of WebhookClient
+        //     bodysuccess: true,
+        //     height: height,
+        //     weight: weight
+        //         // agentVersion: agent.agentVersion,
+        //         // intent: agent.inten,
+        //         // locale: agent.locale,
+        //         // query: agent.query,
+        //         // session: agent.session,
+            
+                    
+        // });
         res.send({
-                //Test get value of WebhookClient
-            bodysuccess: true,
-            height: height,
-            weight: weight
-                // agentVersion: agent.agentVersion,
-                // intent: agent.inten,
-                // locale: agent.locale,
-                // query: agent.query,
-                // session: agent.session,
+            "fulfillmentMessages": [
+                {
+                  "text": {
+                    "text": [
+                      "เอ...ขอคิดแปปนึงนะ ว่าน้ำหนัก 64 และส่วนสูง 160 จะอ้วนหรือผอมดีน้าาา"
+                    ]
+                  },
+                  "platform": "LINE"
+                },
+                {
+                  "payload": {
+                    "line": {
+                      "packageId": "11538",
+                      "stickerId": "51626519",
+                      "type": "sticker"
+                    }
+                  },
+                  "platform": "LINE"
+                },
+                {
+                  "text": {
+                    "text": [
+                      "THIKAMPORN SIMUD"
+                    ]
+                  }
+                }
+              ]
         });
     }
         //Create an instance
