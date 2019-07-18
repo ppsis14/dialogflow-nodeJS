@@ -13,6 +13,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
   
+// to check error when connect hosting
 app.get('/', (req, res) => {
     res.send({
       success: true
