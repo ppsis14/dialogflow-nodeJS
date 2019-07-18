@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const request = require('request')
 const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
+const csvtojson = require('csvtojson')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
 // listen on port
@@ -17,11 +18,21 @@ const app = express();
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
+
+csvtojson().fromFile("./1000datapoints.csv").then(source => {
+    console.log(source);
+})
+
 // to check error when connect hosting
 app.get('/', (req, res) => {
-    res.send({
-      success: true
-    });
+    csvtojson().fromFile("./1000datapoints.csv").then(source => {
+        // console.log(source);
+        res.send(source)
+    })
+
+    // res.send({
+    //   success: true
+    // });
 })
 
 // hadler when webhook was connect from dialogflow
