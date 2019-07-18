@@ -4,9 +4,9 @@
 //     verify: true,
 // };
 // module.exports = config;
-const DBconfig = {
-    root : '',
+// const DBconfig = {
+//     root : '',
 
-};
+// };
 
-module.exports = DBconfig;
+// module.exports = DBconfig;

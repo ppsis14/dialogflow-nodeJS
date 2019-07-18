@@ -4,7 +4,7 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const config = require('./DBconfig.js/index.js');
+const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
