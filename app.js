@@ -7,6 +7,8 @@ const request = require('request')
 const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
 const csvtojson = require('csvtojson')
+const csvjson = require('csvjson');
+const readFile = require('fs').readFile;
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
 // listen on port
@@ -25,10 +27,20 @@ csvtojson().fromFile("./1000datapoints.csv").then(source => {
 
 // to check error when connect hosting
 app.get('/', (req, res) => {
-    csvtojson().fromFile("./1000datapoints.csv").then(source => {
-        // console.log(source);
-        res.send(source)
-    })
+    readFile('./test-data.csv', 'utf-8', (err, fileContent) => {
+        if(err) {
+            console.log(err); // Do something to handle the error or just throw it
+            throw new Error(err);
+        }
+        const jsonObj = csvjson.toObject(fileContent);
+
+        res.send(jsonObj)
+        // console.log(jsonObj);
+    });
+    // csvtojson().fromFile("./1000datapoints.csv").then(source => {
+    //     // console.log(source);
+    //     res.send(source)
+    // })
 
     // res.send({
     //   success: true
