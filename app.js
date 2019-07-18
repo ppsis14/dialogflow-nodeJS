@@ -21,13 +21,13 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-csvtojson().fromFile("./1000datapoints.csv").then(source => {
-    console.log(source);
-})
+// csvtojson().fromFile("./1000datapoints.csv").then(source => {
+//     console.log(source);
+// })
 
 // to check error when connect hosting
 app.get('/', (req, res) => {
-    readFile('./test-data.csv', 'utf-8', (err, fileContent) => {
+    readFile('./1000datapoints.csv', 'utf-8', (err, fileContent) => {
         if(err) {
             console.log(err); // Do something to handle the error or just throw it
             throw new Error(err);
