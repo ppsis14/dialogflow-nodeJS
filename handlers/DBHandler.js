@@ -1,7 +1,7 @@
 const mysql = require('mysql')
 const DBconfig = require('./DBconfig.js')
 const db = mysql.createConnection(DBconfig)
-const strQuery
+var strQuery
 
 db.connect((err) => {
     if (err) {
@@ -20,7 +20,12 @@ function insertData(data, into) {
     return strQuery
 }
 
+function getConnection() {
+    return db
+}
+
 module.exports = {
     selectData,
     insertData,
+    getConnection
  }

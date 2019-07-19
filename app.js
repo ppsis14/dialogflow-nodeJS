@@ -31,8 +31,10 @@ app.get('/', (req, res) => {
     //     // console.log(jsonObj);
     // });
     csvtojson().fromFile("./1000datapoints.csv").then(source => {
+        
         console.log(source);
         res.send(source)
+
     })
 
     // res.send({
