@@ -6,6 +6,7 @@ const bodyParser = require('body-parser')
 const {WebhookClient} = require('dialogflow-fulfillment');
 // listen on port
 const port = process.env.PORT || 4000
+const db = require('./handlers/DBHandler.js')
 
 // create Express app
 const app = express();
@@ -13,11 +14,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
   
+
+console.log(db);
+
 // to check error when connect hosting
 app.get('/', (req, res) => {
     res.send({
-      success: true
-    });
+      success: true,
+      db_connect : db
+    })
 })
 
 app.post('/webhook', (req, res) => {

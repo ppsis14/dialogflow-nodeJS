@@ -7,6 +7,7 @@ const request = require('request')
 const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
 const csvtojson = require('csvtojson')
+const db = require('')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
 // listen on port
