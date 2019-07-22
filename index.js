@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment');
 // listen on port
-const port = process.env.PORT || 4000
+const port = 4000
 const db = require('./handlers/DBHandler.js')
 
 // create Express app
