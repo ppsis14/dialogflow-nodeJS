@@ -21,7 +21,7 @@
   "homepage": "https://github.com/ppsis14/dialogflow-nodeJS#readme",
   "dependencies": {
     "@line/bot-sdk": "^6.8.0",
-    "actions-on-google": "^2.9.0",
+    "actions-on-google": "^2.9.1",
     "body-parser": "^1.19.0",
     "csvtojson": "^2.0.10",
     "dialogflow": "^0.10.2",
