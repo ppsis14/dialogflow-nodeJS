@@ -3,7 +3,7 @@ require('dotenv').config()
 // const line = require('@line/bot-sdk')
 const express = require('express')
 const bodyParser = require('body-parser')
-const request = require('request')
+// const request = require('request')
 const webhookHandler = require('./handlers/webhookHandler.js')
 const csvtojson = require('csvtojson')
 const db = require('./handlers/DBHandler.js')
@@ -46,6 +46,7 @@ app.get('/', (req, res) => {
     // res.send({
     //   success: true
     // });
+    res.end()
 })
 
 // hadler when webhook was connect from dialogflow
