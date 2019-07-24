@@ -7,7 +7,7 @@ const request = require('request')
 const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
 const csvtojson = require('csvtojson')
-const db = require('')
+const db = require('./handlers/DBHandler.js')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
 // listen on port
@@ -18,6 +18,8 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
+
+console.log(db);
 
 // to check error when connect hosting
 app.get('/', (req, res) => {

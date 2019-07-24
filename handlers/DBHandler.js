@@ -1,6 +1,6 @@
 const mysql = require('mysql')
 require('dotenv').config()
-// const DBconfig = require('./DBconfig.js')
+
 var db = mysql.createConnection({
     host : process.env.DB_HOST,
     // port : process.env.PORT,
@@ -8,7 +8,8 @@ var db = mysql.createConnection({
     password : process.env.DB_PWD,
     database : process.env.DB_NAME
 })
-var strQuery
+
+// const db = mysql.createConnection(DBconfig);
 
 module.exports = db.connect((err) => {
     if (err) {
