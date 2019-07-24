@@ -4,7 +4,6 @@ require('dotenv').config()
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
-const DBconfig = require('./DBconfig.js');
 const webhookHandler = require('./handlers/webhookHandler.js')
 const csvtojson = require('csvtojson')
 const db = require('./handlers/DBHandler.js')
@@ -23,6 +22,10 @@ console.log(db);
 
 // to check error when connect hosting
 app.get('/', (req, res) => {
+    res.send({
+        success: true,
+        db_connect : db
+    })
     // readFile('./1000datapoints.csv', 'utf-8', (err, fileContent) => {
     //     if(err) {
     //         console.log(err); // Do something to handle the error or just throw it
@@ -33,12 +36,12 @@ app.get('/', (req, res) => {
     //     res.send(jsonObj)
     //     // console.log(jsonObj);
     // });
-    csvtojson().fromFile("./1000datapoints.csv").then(source => {
+    // csvtojson().fromFile("./1000datapoints.csv").then(source => {
         
-        console.log(source);
-        res.send(source)
+    //     console.log(source);
+    //     res.send(source)
 
-    })
+    // })
 
     // res.send({
     //   success: true
