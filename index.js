@@ -21,7 +21,7 @@ console.log(db);
 app.get('/', (req, res) => {
     res.send({
       success: true,
-      db_connect : db
+      db_connect : "thikamporn"
     })
 })
 
