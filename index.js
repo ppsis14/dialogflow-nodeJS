@@ -5,7 +5,7 @@ const bodyParser = require('body-parser')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment');
 // listen on port
-const port = 4000
+const port = 8000
 const db = require('./handlers/DBHandler.js')
 
 // create Express app
@@ -36,7 +36,7 @@ app.post('/webhook', (req, res) => {
                 {
                   "text": {
                     "text": [
-                      "THIKAMPORN SIMUD"
+                      "THIKAMPORN SIMUD use ngrok webhook success"
                     ]
                   },
                   "platform": "LINE"
@@ -54,7 +54,7 @@ app.post('/webhook', (req, res) => {
                 {
                   "text": {
                     "text": [
-                      "THIKAMPORN SIMUD"
+                      "THIKAMPORN SIMUD use ngrok webhook success"
                     ]
                   }
                 }

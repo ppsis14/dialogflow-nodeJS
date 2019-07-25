@@ -10,7 +10,7 @@ const db = require('./handlers/DBHandler.js')
 // Import the appropriate class
 const {WebhookClient} = require('dialogflow-fulfillment')
 // listen on port
-const port = process.env.PORT || 4000
+const port = process.env.PORT || 8000
 
 // create Express app
 const app = express();
@@ -24,7 +24,7 @@ console.log(db);
 app.get('/', (req, res) => {
     res.send({
         success: true,
-        db_connect : db
+        db_connect : "thikamporn simud"
     })
     // readFile('./1000datapoints.csv', 'utf-8', (err, fileContent) => {
     //     if(err) {

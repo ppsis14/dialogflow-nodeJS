@@ -10,7 +10,7 @@ const webhook = (req, res) => {
                 {
                   "text": {
                     "text": [
-                      "THIKAMPORN SIMUD"
+                      "THIKAMPORN SIMUD from app.js"
                     ]
                   },
                   "platform": "LINE"
@@ -28,7 +28,7 @@ const webhook = (req, res) => {
                 {
                   "text": {
                     "text": [
-                      "THIKAMPORN SIMUD"
+                      "THIKAMPORN SIMUD from app.js"
                     ]
                   }
                 }
