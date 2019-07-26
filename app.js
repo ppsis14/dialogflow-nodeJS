@@ -5,10 +5,7 @@ const express = require('express')
 const bodyParser = require('body-parser')
 // const request = require('request')
 const webhookHandler = require('./handlers/webhookHandler.js')
-const csvtojson = require('csvtojson')
-const db = require('./handlers/DBHandler.js')
-// Import the appropriate class
-const {WebhookClient} = require('dialogflow-fulfillment')
+// const csvtojson = require('csvtojson')
 // listen on port
 const port = process.env.PORT || 8000
 
@@ -17,8 +14,6 @@ const app = express();
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
-
-console.log(db);
 
 // to check error when connect hosting
 app.get('/', (req, res) => {

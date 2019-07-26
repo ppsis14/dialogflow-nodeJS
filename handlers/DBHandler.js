@@ -7,28 +7,20 @@ var db = mysql.createConnection({
     password : process.env.DB_PWD,
     database : process.env.DB_NAME
 })
-
-// const db = mysql.createConnection(DBconfig);
-
-module.exports = db.connect((err) => {
+db.connect((err) => {
     if (err) {
         throw err
         // console.log("Mysql is not connected...");
     }
-    console.log("Mysql is connected already...");
+    console.log("Mysql is connected already...1");
+    // return "Mysql is connected already..."
 })
 
-// function selectData(data, from, where) {
-//     strQuery = "SELECT "
-//     return strQuery
-// }
+let sql = `SELECT * FROM tpmap_datapoints LIMIT 2`;
 
-// function getConnection() {
-//     return db
-// }
-
-// module.exports = {
-//     selectData,
-//     insertData,
-//     getConnection
-//  }
+db.query(sql, (error, results, fields) => {
+    if (error) {
+        return console.error(error.message);
+    }
+    console.log(results);
+})

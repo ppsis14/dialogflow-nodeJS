@@ -1,9 +1,11 @@
+const db = require('./DBHandler.js')
+// Import the appropriate class
+const {WebhookClient} = require('dialogflow-fulfillment')
+
 const webhook = (req, res) => {
     if (req.body.queryResult.action == "BMI.BMI-custom.BMI-custom-yes") {
         console.log(req.body);
         const parameters = req.body.queryResult.parameters
-        // var height = parameters['height']
-        // var weight = parameters['weight']
         
         res.send({
             "fulfillmentMessages": [
